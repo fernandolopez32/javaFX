@@ -19,7 +19,6 @@ import java.util.Random;
 
 public class HelloApplication extends Application {
     // variables
-
     static int speed = 5;
     static int foodColor = 0;
     static int with = 20;
@@ -150,11 +149,11 @@ public class HelloApplication extends Application {
             newFood();
         }
         // self destroy
-        for(int i = 1; i<snake.size();i++){
-            if(snake.get(0).x == snake.get(i).x && snake.get(0).y == snake.get(i).y){
-                gameOver = true;
-            }
-        }
+//        for(int i = 1; i<snake.size();i++){
+//            if(snake.get(0).x == snake.get(i).x && snake.get(0).y == snake.get(i).y){
+//                gameOver = true;
+//            }
+//        }
         // fill
         // background
         gc.setFill(Color.BLACK);
