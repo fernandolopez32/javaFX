@@ -2,7 +2,6 @@ package com.example.hellofx;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -12,9 +11,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import java.io.IOException;
+
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Random;
 
 public class HelloApplication extends Application {
@@ -88,8 +86,8 @@ public class HelloApplication extends Application {
 
             // add start snake parts
             snake.add(new HelloApplication.Corner(with/2,height/2));
-            snake.add(new HelloApplication.Corner(with/2,height/2));
-            snake.add(new HelloApplication.Corner(with/2,height/2));
+//            snake.add(new HelloApplication.Corner(with/2,height/2));
+//            snake.add(new HelloApplication.Corner(with/2,height/2));
 
 
             //========= THIS MAKES IT NOT WORK =====
@@ -125,7 +123,7 @@ public class HelloApplication extends Application {
             }
             case down -> {
                 snake.get(0).y++;
-                if (snake.get(0).y < height) {
+                if (snake.get(0).y > height) {
                     gameOver = true;
                 }
             }
@@ -137,15 +135,16 @@ public class HelloApplication extends Application {
             }
             case right -> {
                 snake.get(0).x++;
-                if (snake.get(0).x < with) {
+                if (snake.get(0).x > with) {
                     gameOver = true;
                 }
             }
         }
         // eat food
-
         if(foodX == snake.get(0).x && foodY == snake.get(0).y){
-            snake.add(new HelloApplication.Corner(-1,-1));
+//            snake.add(new Corner(snake.get(1).x+1,snake.get(0).y+1));
+            snake.add(new HelloApplication.Corner(snake.get(0).x-1,snake.get(0).y));
+
             newFood();
         }
         // self destroy
@@ -154,8 +153,8 @@ public class HelloApplication extends Application {
 //                gameOver = true;
 //            }
 //        }
-        // fill
-        // background
+//         fill
+//         background
         gc.setFill(Color.BLACK);
         gc.fillRect(0,0,with*cornerSize,height*cornerSize);
 
@@ -177,7 +176,7 @@ public class HelloApplication extends Application {
         gc.setFill(cc);
         gc.fillOval(foodX*cornerSize, foodY *cornerSize, cornerSize,cornerSize);
 
-        // snake
+        // snake color
         for(HelloApplication.Corner c: snake){
             gc.setFill(Color.LIGHTGREEN);
             gc.fillRect(c.x*cornerSize, c.y*cornerSize, cornerSize-1, cornerSize-1);
