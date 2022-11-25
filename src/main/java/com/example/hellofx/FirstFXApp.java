@@ -13,7 +13,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Random;
 
 public class FirstFXApp extends Application {
@@ -92,7 +91,7 @@ public class FirstFXApp extends Application {
             snake.add(new Corner(with/2,height/2));
             snake.add(new Corner(with/2,height/2));
 
-//            scene.getStylesheets().add(getClass().getResource("applications.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("applications.css").toExternalForm());
             stage.setTitle("Snake");
             stage.setScene(scene);
             stage.show();
